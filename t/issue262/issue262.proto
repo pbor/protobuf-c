@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+message MyMessage {
+  repeated MySubMessage a = 1;
+
+  message MySubMessage {
+    uint32 a = 1;
+    double b = 2;
+
+    repeated MySubSubMessage c = 3;
+
+    message MySubSubMessage {
+      int32 a = 1;
+      int32 b = 2;
+    }
+  }
+}

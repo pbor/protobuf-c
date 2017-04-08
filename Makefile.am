@@ -247,6 +247,23 @@ BUILT_SOURCES += \
 EXTRA_DIST += \
 	t/issue251/issue251.proto
 
+# Issue #262
+check_PROGRAMS += \
+	t/issue262/issue262
+TESTS += \
+	t/issue262/issue262
+t_issue262_issue262_SOURCES = \
+	t/issue262/issue262.c \
+	t/issue262/issue262.pb-c.c
+t_issue262_issue262_LDADD = \
+	protobuf-c/libprotobuf-c.la
+t/issue262/issue262.pb-c.c t/issue262/issue262.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue262/issue262.proto
+	$(AM_V_GEN)@PROTOC@ --plugin=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue262/issue262.proto
+BUILT_SOURCES += \
+	t/issue262/issue262.pb-c.c t/issue262/issue262.pb-c.h
+EXTRA_DIST += \
+	t/issue262/issue262.proto
+
 endif # CROSS_COMPILING
 
 endif # BUILD_COMPILER
