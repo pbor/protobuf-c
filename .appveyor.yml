@@ -1,7 +1,16 @@
 version: '1.3.0'
 
+image: Visual Studio 2015
+
+#environment:
+#  PROTOBUF_VERSION: 3.0.2
+
+# preserve protobuf between builds if this file is not changed
+#cache:
+#  - google_protobuf -> .appveyor.yml
+
 install:
-  - choco install protoc
+  - choco install -y protoc
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
