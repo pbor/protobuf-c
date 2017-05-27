@@ -8,7 +8,8 @@ image: Visual Studio 2015
 #  - google_protobuf -> .appveyor.yml
 
 install:
-  - choco install -y protoc
+  - appveyor-retry choco install doxygen.portable
+  - appveyor-retry choco install protoc
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
