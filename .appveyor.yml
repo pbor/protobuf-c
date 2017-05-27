@@ -1,5 +1,11 @@
 version: '1.3.0'
 
+install:
+  - curl -L -o protobuf.zip https://github.com/google/protobuf/archive/v3.0.2.zip
+  - 7z x protobuf.zip
+  - del /Q protobuf.zip
+  - choco install protoc
+
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - cmake .\build-cmake\ -G"Visual Studio 14"
